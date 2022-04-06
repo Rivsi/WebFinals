@@ -1,0 +1,66 @@
+﻿@model List<StudentDLL>
+
+
+
+<div class="container rounded bg-dark m-4">
+    <h1 class="text-center pt-3">Students Lists</h1>
+    <a class="nav-link text-warning" asp-controller="Student" asp-action="Add">
+        Add Student
+        <span class="visually-hidden">(current)</span>
+
+    </a>
+    <div class="container mx-2">
+        Search:<input type="text" class="form-control me-sm-2" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    </div>
+    <div class="shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-white" id="myTable" width="100%" cellspacing="0">
+
+                    <thead class="bg-warning text-center">
+                        <tr class="header">
+                            <th>Student ID.</th>
+                            <th>Student Name</th>
+                            <th>Last Name</th>
+                            <th>Add Record</th>
+                            <th>Update Record</th>
+                            <th>Delete Record</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center bg-dark">
+                        @foreach (StudentDLL items in Model)
+                        {
+                            <tr>
+                                <td>@items.id</td>
+                                <td>@items.firstName</td>
+                                <td>@items.lastName</td>
+                                <td>
+                                    <a type="button" class="btn btn-success" asp-controller="Student" asp-action="Add">
+                                        Add Student
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Student" asp-action="Edit"
+                                       asp-route-id="@items.id" class="btn btn-info">
+                                        Edit Student
+                                    </a>
+                                </td>
+                                <td>
+                                    <form asp-controller="Student" asp-action="Delete"
+                                          method="post">
+                                        <input type="hidden" name="id" value="@items.id" align-content-xxl-center />
+                                        <button type="submit"
+                                                class="btn btn-danger">
+                                            Delete Student
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

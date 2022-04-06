@@ -1,0 +1,38 @@
+﻿@model StudentDLL
+
+
+<div class="container bg-dark m-4">
+    <h1 class="text-center pt-2"> Edit Student</h1>
+    <form asp-controller="Student" asp-action="Edit" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="~/Image/white-grad.png" class="w-25 text-center mb-2 mt-2" />
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4 border-2">
+            <input type="hidden" name="id" value="@Model.id" />
+
+            First Name
+            <input type="text" name="firstName"
+                   class="form-control" value="@Model.firstName" required />
+            <span class="text-danger" asp-validation-for="firstName"></span>
+            <br />
+            Last Name
+            <input type="text" name="lastName"
+                   class="form-control" value="@Model.lastName" required /><br />
+            <span class="text-danger" asp-validation-for="lastName"></span>
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-success mb-5 h-75 w-100">
+                            Edit Student
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
